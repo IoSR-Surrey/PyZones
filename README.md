@@ -12,5 +12,6 @@ Coleman, P., Jackson, P. J., Olik, M., & Abildgaard Pedersen, J. (2014). Persona
 
 Where appropriate, users of the toolbox are encouraged to reference the above article.
 
-## Contact
+## Contact
+
 Philip Coleman [p.d.coleman@surrey.ac.uk]
