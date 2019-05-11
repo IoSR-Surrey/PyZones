@@ -111,7 +111,7 @@ class Circle(Shape):
 
     def get_circular_points(self, start_angle, end_angle, num_points, radius, decimal_places=None):
         """
-        Create a list of points between the user defined start and end angles on the perimeter of a new circle sharing
+        Create a list of points between the user defined start and end angles (in degrees) on the perimeter of a new circle sharing
         the centre point of this circle with a different radius
 
         :param start_angle: Position at which the list of points should begin
@@ -1299,7 +1299,7 @@ class Simulation:
         elif orientation is "loudspeakers":
             return mics, np.transpose(np.array(tf_subset), (2, 1, 0))
 
-    def calculate_filter_weights(self, method='BC'):
+    def calculate_filter_weights(self, method='BC', beta=0.01):
         """
         Calculate filter weights for the loudspeaker array based on the transfer functions of the microphones in the mic
         array with the purpose of "bright" or "either". Four different methods are available - Brightness control 'BC',
@@ -1345,8 +1345,7 @@ class Simulation:
                 ga_h = ga.conj().T
                 gb_h = gb.conj().T
 
-                l_c = 0.01
-                w, v = np.linalg.eig(np.linalg.solve(gb_h @ gb + l_c * np.identity(gb.shape[1]), ga_h @ ga))
+                w, v = np.linalg.eig(np.linalg.solve(gb_h @ gb + beta * np.identity(gb.shape[1]), ga_h @ ga))
                 max_eig_val = np.argmax(w)
                 q = v[:, max_eig_val]
                 scale_q(q, i)
@@ -1395,8 +1394,7 @@ class Simulation:
                 hha = bsv.hha[i]
                 hha_h = hha.conj().T
 
-                l_c = 0.01
-                g = np.linalg.solve(gb_h @ gb + l_c * np.identity(gb.shape[1]), ga_h @ hha_h @ win @ hha @ ga)
+                g = np.linalg.solve(gb_h @ gb + beta * np.identity(gb.shape[1]), ga_h @ hha_h @ win @ hha @ ga)
                 w, v = np.linalg.eig(g)
                 max_eig_val = np.argmax(w)
                 q = v[:, max_eig_val]
@@ -1405,8 +1403,7 @@ class Simulation:
         elif method == 'PM':
 
             angle = np.deg2rad((self._pm_angle-90) % 360)
-            beta = 0.01
-
+            
             pos_a = setup_bright.get_object_positions()
             pos_b = setup_dark.get_object_positions()
 
