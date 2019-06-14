@@ -1,9 +1,9 @@
-.. Pyzones documentation master file, created by
-   sphinx-quickstart on Mon Feb 11 12:20:48 2019.
+.. PyZones documentation master file, created by
+   sphinx-quickstart on Fri Jun 14 09:06:47 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Pyzones's documentation!
+Welcome to PyZones's documentation!
 ===================================
 
 .. toctree::
@@ -12,6 +12,7 @@ Welcome to Pyzones's documentation!
 
    source/modules
 
+   
 
 Indices and tables
 ==================

@@ -63,6 +63,7 @@ class Circle(Shape):
 
     Attributes
     ----------
+    
     centre : list
         A list of coordinates (x, y) describing the centre of the circle
     radius : float
@@ -673,8 +674,9 @@ class Microphone(SoundObject):
     """
     A microphone to be used in simulations of sound zones. Inherits from the sound object class.
 
-    Class Attributes
+    Attributes
     ----------------
+    
     _radius : static float
         The radius of circles used to represent the microphones when rendered in the soundfield
 
@@ -792,8 +794,8 @@ class Loudspeaker(SoundObject):
     """
     A loudspeaker to be used as a source in simulations of sound zones. Inherits from the sound object class.
 
-    Class Attributes
-    ----------------
+    Attributes
+    -----------
     _width : static float
         The width of rectangles used to represent loudspeakers when rendered in the soundfield
     _height : static float
@@ -1039,7 +1041,7 @@ class Simulation:
     """
     Where all of the calculations for the simulation happen. Using the input of the different array and zone
     geometries calculates filter weights across a range of frequencies for different methods of sound zone optimisation
-     - Brightness Control, Acoustic Contrast Control, Planarity Control and Pressure Matching.
+    - Brightness Control, Acoustic Contrast Control, Planarity Control and Pressure Matching.
 
     Attributes
     ----------
@@ -1308,6 +1310,8 @@ class Simulation:
 
         :param method: The string containing the method for which the filter weights should be calculated.
         :type method: str
+        :param beta: Diagonal loading value for regularization of matrix inversion
+        :type beta: float
 
         """
 
